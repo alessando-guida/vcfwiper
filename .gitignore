@@ -10,6 +10,7 @@ __pycache__/
 conda-recipe/
 bld.bat
 meta.yaml
+setup.py
 
 # Distribution / packaging
 .Python

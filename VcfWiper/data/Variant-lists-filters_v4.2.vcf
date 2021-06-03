@@ -1,0 +1,138 @@
+##fileformat=VCFv4.2									
+##ALT=<ID=NON_REF,Description="Represents any possible alternative allele at this location">									
+##FILTER=<ID=100QUAL,Description="QUAL < 100">									
+##FILTER=<ID=LowQual,Description="Low quality">									
+##FILTER=<ID=REJECT_INDEL,Description="QD < 2.0 || FS > 200.0 || ReadPosRankSum < -20.0">									
+##FILTER=<ID=REJECT_SNP,Description="QD < 2.0 || FS > 60.0 || MQ < 40.0 || MQRankSum < -12.5 || ReadPosRankSum < -8.0">									
+##FILTER=<ID=SnpCluster,Description="SNPs found in clusters">									
+##FORMAT=<ID=AD,Number=R,Type=Integer,Description="Allelic depths for the ref and alt alleles in the order listed">									
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Approximate read depth (reads with MQ=255 or with bad mates are filtered)">									
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description="Genotype Quality">									
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">									
+##FORMAT=<ID=MIN_DP,Number=1,Type=Integer,Description="Minimum DP observed within the GVCF block">									
+##FORMAT=<ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another">									
+##FORMAT=<ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">									
+##FORMAT=<ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">									
+##FORMAT=<ID=PS,Number=1,Type=Integer,Description="Phasing set (typically the position of the first variant in the set)">									
+##FORMAT=<ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">									
+##FORMAT=<ID=SB,Number=4,Type=Integer,Description="Per-sample component statistics which comprise the Fisher's Exact Test to detect strand bias.">									
+##GATKCommandLine.CombineVariants=<ID=CombineVariants,Version=3.8-0-ge9d806836,Date="Wed Jun 10 15:49:55 GMT 2020",Epoch=1591804195598,CommandLineOptions="analysis_type=CombineVariants input_file=[] showFullBamList=false read_buffer_size=null read_filter=[] disable_read_filter=[] intervals=null excludeIntervals=null interval_set_rule=UNION interval_merging=ALL interval_padding=0 reference_sequence=/data01/reference_data/hg19/genome/hg19_ucsc_filtered.fa nonDeterministicRandomSeed=false disableDithering=false maxRuntime=-1 maxRuntimeUnits=MINUTES downsampling_type=BY_SAMPLE downsample_to_fraction=null downsample_to_coverage=1000 baq=OFF baqGapOpenPenalty=40.0 refactor_NDN_cigar_string=false fix_misencoded_quality_scores=false allow_potentially_misencoded_quality_scores=false useOriginalQualities=false defaultBaseQualities=-1 performanceLog=null BQSR=null quantize_quals=0 static_quantized_quals=null round_down_quantized=false disable_indel_quals=false emit_original_quals=false preserve_qscores_less_than=6 globalQScorePrior=-1.0 secondsBetweenProgressUpdates=10 validation_strictness=SILENT remove_program_records=false keep_program_records=false sample_rename_mapping_file=null unsafe=null use_jdk_deflater=false use_jdk_inflater=false disable_auto_index_creation_and_locking_when_reading_rods=false no_cmdline_in_header=false sites_only=false never_trim_vcf_format_field=false bcf=false bam_compression=null simplifyBAM=false disable_bam_indexing=false generate_md5=false num_threads=1 num_cpu_threads_per_data_thread=1 num_io_threads=0 monitorThreadEfficiency=false num_bam_file_handles=null read_group_black_list=null pedigree=[] pedigreeString=[] pedigreeValidationType=STRICT allow_intervals_with_unindexed_bam=false generateShadowBCF=false variant_index_type=DYNAMIC_SEEK variant_index_parameter=-1 reference_window_stop=0 phone_home= gatk_key=null tag=NA logging_level=INFO log_to_file=null help=false version=false variant=[(RodBindingCollection [(RodBinding name=indel_mixed source=/scratch/tmp/QC_w4rdx9a2/GATK/18-4081-NDD-Epi/18-4081-NDD-Epi_filtered_indels.vcf)]), (RodBindingCollection [(RodBinding name=snp_mnp source=/scratch/tmp/QC_w4rdx9a2/GATK/18-4081-NDD-Epi/18-4081-NDD-Epi_filtered_snps.vcf)])] out=/scratch/tmp/QC_w4rdx9a2/GATK/18-4081-NDD-Epi/18-4081-NDD-Epi.vcf genotypemergeoption=PRIORITIZE filteredrecordsmergetype=KEEP_IF_ANY_UNFILTERED multipleallelesmergetype=BY_TYPE rod_priority_list=snp_mnp,indel_mixed printComplexMerges=false filteredAreUncalled=false minimalVCF=false excludeNonVariants=false setKey=set assumeIdenticalSamples=false minimumN=1 suppressCommandLineHeader=false mergeInfoWithMaxAC=false filter_reads_with_N_cigar=false filter_mismatching_base_and_quals=false filter_bases_not_stored=false">									
+##GATKCommandLine=<ID=GenotypeGVCFs,CommandLine="GenotypeGVCFs  --output /scratch/tmp/QC_w4rdx9a2/GATK/18-4081-NDD-Epi/18-4081-NDD-Epi_unfiltered.vcf --use-new-qual-calculator true --standard-min-confidence-threshold-for-calling 10.0 --sample-ploidy 2 --variant /scratch/tmp/QC_w4rdx9a2/GATK/18-4081-NDD-Epi/18-4081-NDD-Epi.g.vcf --intervals /scratch/javatmp/t.mazza/3251971_NDD_Epi_SGR_sorted_ovl.bed.intervals --reference /data01/reference_data/hg19/genome/hg19_ucsc_filtered.fa  --include-non-variant-sites false --merge-input-intervals false --input-is-somatic false --tumor-lod-to-emit 3.5 --allele-fraction-error 0.001 --keep-combined-raw-annotations false --use-old-qual-calculator false --annotate-with-num-discovered-alleles false --heterozygosity 0.001 --indel-heterozygosity 1.25E-4 --heterozygosity-stdev 0.01 --max-alternate-alleles 6 --max-genotype-count 1024 --num-reference-samples-if-no-call 0 --only-output-calls-starting-in-intervals false --interval-set-rule UNION --interval-padding 0 --interval-exclusion-padding 0 --interval-merging-rule ALL --read-validation-stringency SILENT --seconds-between-progress-updates 10.0 --disable-sequence-dictionary-validation false --create-output-bam-index true --create-output-bam-md5 false --create-output-variant-index true --create-output-variant-md5 false --lenient false --add-output-sam-program-record true --add-output-vcf-command-line true --cloud-prefetch-buffer 40 --cloud-index-prefetch-buffer -1 --disable-bam-index-caching false --sites-only-vcf-output false --help false --version false --showHidden false --verbosity INFO --QUIET false --use-jdk-deflater false --use-jdk-inflater false --gcs-max-retries 20 --gcs-project-for-requester-pays  --disable-tool-default-read-filters false --disable-tool-default-annotations false --enable-all-annotations false",Version="4.1.1.0",Date="June 10, 2020 3:47:11 PM GMT">									
+##INFO=<ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">									
+##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">									
+##INFO=<ID=AN,Number=1,Type=Integer,Description="Total number of alleles in called genotypes">									
+##INFO=<ID=BaseQRankSum,Number=1,Type=Float,Description="Z-score from Wilcoxon rank sum test of Alt Vs. Ref base qualities">									
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Approximate read depth; some reads may have been filtered">									
+##INFO=<ID=DS,Number=0,Type=Flag,Description="Were any of the samples downsampled?">									
+##INFO=<ID=END,Number=1,Type=Integer,Description="Stop position of the interval">									
+##INFO=<ID=ExcessHet,Number=1,Type=Float,Description="Phred-scaled p-value for exact test of excess heterozygosity">									
+##INFO=<ID=FS,Number=1,Type=Float,Description="Phred-scaled p-value using Fisher's exact test to detect strand bias">									
+##INFO=<ID=InbreedingCoeff,Number=1,Type=Float,Description="Inbreeding coefficient as estimated from the genotype likelihoods per-sample when compared against the Hardy-Weinberg expectation">									
+##INFO=<ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">									
+##INFO=<ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">									
+##INFO=<ID=MQ,Number=1,Type=Float,Description="RMS Mapping Quality">									
+##INFO=<ID=MQRankSum,Number=1,Type=Float,Description="Z-score From Wilcoxon rank sum test of Alt vs. Ref read mapping qualities">									
+##INFO=<ID=QD,Number=1,Type=Float,Description="Variant Confidence/Quality by Depth">									
+##INFO=<ID=RAW_MQandDP,Number=2,Type=Integer,Description="Raw data (sum of squared MQ and total depth) for improved RMS Mapping Quality calculation. Incompatible with deprecated RAW_MQ formulation.">									
+##INFO=<ID=ReadPosRankSum,Number=1,Type=Float,Description="Z-score from Wilcoxon rank sum test of Alt vs. Ref read position bias">									
+##INFO=<ID=SOR,Number=1,Type=Float,Description="Symmetric Odds Ratio of 2x2 contingency table to detect strand bias">									
+##INFO=<ID=set,Number=1,Type=String,Description="Source VCF for the merged record in CombineVariants">									
+##contig=<ID=chr1,length=249250621,assembly=hg19>									
+##contig=<ID=chr2,length=243199373,assembly=hg19>									
+##contig=<ID=chr3,length=198022430,assembly=hg19>									
+##contig=<ID=chr4,length=191154276,assembly=hg19>									
+##contig=<ID=chr5,length=180915260,assembly=hg19>									
+##contig=<ID=chr6,length=171115067,assembly=hg19>									
+##contig=<ID=chr7,length=159138663,assembly=hg19>									
+##contig=<ID=chr8,length=146364022,assembly=hg19>									
+##contig=<ID=chr9,length=141213431,assembly=hg19>									
+##contig=<ID=chr10,length=135534747,assembly=hg19>									
+##contig=<ID=chr11,length=135006516,assembly=hg19>									
+##contig=<ID=chr12,length=133851895,assembly=hg19>									
+##contig=<ID=chr13,length=115169878,assembly=hg19>									
+##contig=<ID=chr14,length=107349540,assembly=hg19>									
+##contig=<ID=chr15,length=102531392,assembly=hg19>									
+##contig=<ID=chr16,length=90354753,assembly=hg19>									
+##contig=<ID=chr17,length=81195210,assembly=hg19>									
+##contig=<ID=chr18,length=78077248,assembly=hg19>									
+##contig=<ID=chr19,length=59128983,assembly=hg19>									
+##contig=<ID=chr20,length=63025520,assembly=hg19>									
+##contig=<ID=chr21,length=48129895,assembly=hg19>									
+##contig=<ID=chr22,length=51304566,assembly=hg19>									
+##contig=<ID=chrX,length=155270560,assembly=hg19>									
+##contig=<ID=chrY,length=59373566,assembly=hg19>									
+##contig=<ID=chrM,length=16571,assembly=hg19>									
+##reference=file:///data01/reference_data/hg19/genome/hg19_ucsc_filtered.fa									
+##source=GenotypeGVCFs									
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	sample_ts
+chr1	1991014	.	A	G	0	PASS	AC=2;AF=0.5;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,1
+chr1	2013722	.	C	T	0	PASS	AC=2;AF=0.05;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,2
+chr7	1528947	rs58696597	T	C	.	PASS	AC=2;AF=0.01;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,3
+chr7	117188716	rs3034796	GCAAA	.	.	PASS	AC=2;AF=0.04;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,4
+chr7	74191613	rs4029402	GT	.	.	PASS	AC=2;AF=0.2;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,5
+chr7	44112997	rs28382660	C	.	.	PASS	AC=2;AF=1.00;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,6
+chr7	2552882	rs34637446	GATGGATGGATG	.	.	PASS	AC=2;AF=0.3;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,7
+chr7	117267726	rs35396083	G	.	.	PASS	AC=2;AF=0.1;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,8
+chr7	92146721	rs61750406	T	.	.	PASS	AC=2;AF=0.2;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,9
+chr7	92134082	rs61750412	TG	.	.	PASS	AC=2;AF=0.045;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,10
+chr7	92131228	rs61750414	AG	.	.	PASS	AC=2;AF=0.2;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,11
+chr7	92132484	rs61750415	.	A	.	PASS	AC=2;AF=0.15;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,12
+chr7	92126080	rs61750423	T	.	.	PASS	AC=2;AF=0.02;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,13
+chr15	40990956	rs55714242	.	A	.	PASS	AC=2;AF=0.05;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,14
+chr13	32899301	rs80359425	A	.	.	PASS	AC=2;AF=0.051;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,15
+chr2	215593635	rs1553612184	C	.	.	PASS	AC=2;AF=0.049;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,16
+chr7	296739	rs36156504	G	A	.	PASS	AC=2;AF=0.07;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,17
+chr7	538277	rs34223855	G	C	.	PASS	AC=2;AF=0.1;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,18
+chr7	538284	rs35782510	T	C	.	PASS	AC=2;AF=0.2;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,19
+chr7	538348	rs12720025	A	T	.	PASS	AC=2;AF=0.1;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,20
+chr7	591125	rs71518309	C	G	.	PASS	AC=2;AF=0.2;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,21
+chr7	618855	rs62431411	T	C	.	PASS	AC=2;AF=0.25;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,22
+chr7	618869	rs62431412	G	A	.	PASS	AC=2;AF=0.08;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,23
+chr7	624221	rs9330368	T	G	.	PASS	AC=2;AF=0.2;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,24
+chr7	794471	rs34761279	A	G	.	PASS	AC=2;AF=0.1;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,25
+chr7	808810	rs6946758	C	G	.	PASS	AC=2;AF=0.2;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,26
+chr7	813618	rs4719279	T	C	.	PASS	AC=2;AF=0.1;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,27
+chr7	813650	rs62432869	G	A	.	PASS	AC=2;AF=0.05;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,28
+chr7	821798	rs4374882	C	T	.	PASS	AC=2;AF=0.1;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,29
+chr7	821959	rs35856727	A	T	.	PASS	AC=2;AF=0.5;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,30
+chr7	821979	rs80152367	C	A	.	PASS	AC=2;AF=0.2;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,31
+chr7	21582963	rs2285943	G	T	.	PASS	AC=2;AF=0.1;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,32
+chr7	64438667	rs1404453	G	A	.	PASS	AC=2;AF=0.2;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,33
+chr7	99817585	rs7786505	G	T	.	PASS	AC=2;AF=0.05;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,34
+chr7	100550251	rs74436561	C	T	.	PASS	AC=2;AF=0.051;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,35
+chr7	100551065	rs78250618	T	C	.	PASS	AC=2;AF=0.2;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,36
+chr7	100551392	rs75008337	C	T	.	PASS	AC=2;AF=0.3;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,37
+chr7	100552738	rs79874934	C	T	.	PASS	AC=2;AF=0.4;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,38
+chr7	104717517	rs2240455	C	T	.	PASS	AC=2;AF=0.5;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,39
+chr7	130008285	rs17164867	T	C	.	PASS	AC=2;AF=0.6;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,40
+chr7	130023539	rs12706927	C	T	.	PASS	AC=2;AF=0.04;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,41
+chr7	140244560	rs2293177	C	T	.	PASS	AC=2;AF=0.02;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,42
+chr7	299881	rs36139924	A	G	.	PASS	AC=2;AF=0.50;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,43
+chr7	810219	rs4720951	T	C	.	PASS	AC=2;AF=0.2;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,44
+chr7	814788	rs3922641	G	A	.	PASS	AC=2;AF=0.1;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,45
+chr7	881668	rs6461378	C	T	.	PASS	AC=2;AF=1.00;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,46
+chr7	1028448	rs3808348	C	T	.	PASS	AC=2;AF=0.5;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,47
+chr7	1131411	rs11544331	C	T	.	PASS	AC=2;AF=0.1;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,48
+chr7	1586662	rs3779607	T	C	.	PASS	AC=2;AF=0.5;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,49
+chr7	1608812	rs34407549	C	G	.	PASS	AC=2;AF=0.05;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,50
+chr7	2394746	rs9690787	T	C	.	PASS	AC=2;AF=0.03;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,51
+chr7	2578434	rs4721763	G	T	.	PASS	AC=2;AF=0.11;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,52
+chr7	2578455	rs4721764	G	A	.	PASS	AC=2;AF=0.09;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,53
+chr7	2611241	rs61736920	G	A	.	PASS	AC=2;AF=0.08;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,54
+chr7	2644519	rs2293404	C	T	.	PASS	AC=2;AF=0.02;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,55
+chr7	2645552	rs2293407	A	G	.	PASS	AC=2;AF=0.8;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,56
+chr7	2646796	rs61729413	G	A	.	PASS	AC=2;AF=0.9;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,57
+chr7	299850	rs36170987	G	T	.	PASS	AC=2;AF=0.2;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,58
+chr7	618938	rs3211362	A	G	.	PASS	AC=2;AF=0.1;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,59
+chr7	618974	rs77809618	C	T	.	PASS	AC=2;AF=0.01;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,60
+chr7	940181	rs10256887	C	T	.	PASS	AC=2;AF=0.2;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,61
+chr7	1023013	rs2272375	C	T	.	PASS	AC=2;AF=0.1;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,62
+chr7	1132456	rs10246354	C	T	.	PASS	AC=2;AF=0.2;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,63
+chr7	1195215	rs1133116	A	C	.	PASS	AC=2;AF=0.01;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,64
+chr7	1481919	rs4236408	C	A	.	PASS	AC=2;AF=0.05;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,65
+chr7	1482009	rs61744261	G	C	.	PASS	AC=2;AF=0.02;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,66
+chr7	1484572	rs10435184	A	G	.	PASS	AC=2;AF=0.1;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,67
+chr7	1533513	rs2251226	A	G	.	PASS	AC=2;AF=0.2;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,68
+chr7	1538614	rs2289035	G	A	.	PASS	AC=2;AF=0.3;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,69
+chr7	1542697	rs3752714	G	A	.	PASS	AC=2;AF=0.1;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,70
+chr7	1542814	rs3752715	T	C	.	PASS	AC=2;AF=0.2;AN=2;DP=495;ExcessHet=3.0103;FS=0.000;MLEAC=2;MLEAF=1.00;MQ=60.00;QD=25.36;SOR=2.015;set=snp_mnp	GT:AD:DP:GQ:PL	1/1:0,495:495:99:18508,1485,71
