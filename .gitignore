@@ -6,12 +6,6 @@ __pycache__/
 # C extensions
 *.so
 
-# Conda things
-conda-recipe/
-bld.bat
-meta.yaml
-setup.py
-
 # Distribution / packaging
 .Python
 build/

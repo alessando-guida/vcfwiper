@@ -1,6 +1,6 @@
 # vcfwiper
-[![Build status](https://ci.appveyor.com/api/projects/status/y09medho67x2nrgn?svg=true)](https://ci.appveyor.com/project/mazzalab/fastqwiper)
-[![GitHub issues](https://img.shields.io/github/issues-raw/mazzalab/vcfwiper)](https://github.com/mazzalab/fastqwiper/issues)
+[![Build status](https://ci.appveyor.com/api/projects/status/ljspohumdl4rhlmk?svg=true)](https://ci.appveyor.com/project/irongraft/vcfwiper)
+[![GitHub issues](https://img.shields.io/github/issues-raw/mazzalab/vcfwiper)](https://github.com/mazzalab/vcfwiper/issues)
 
 `VcfWiper` is a Python application that fixes VCF sequencing files
 d reads from readable FASTQ files. 
@@ -18,7 +18,7 @@ d reads from readable FASTQ files.
 `VcfWiper` can be installed using both Conda and PyPi and runs smoothly on all OS specified above.
 
 ### Anaconda or Miniconda
-[![Anaconda-Server Badge](https://anaconda.org/bfxcss/fastqwiper/badges/version.svg)](https://anaconda.org/bfxcss/fastqwiper) [![Anaconda-Server Badge](https://anaconda.org/bfxcss/fastqwiper/badges/latest_release_date.svg)](https://anaconda.org/bfxcss/fastqwiper) [![Anaconda-Server Badge](https://anaconda.org/bfxcss/fastqwiper/badges/platforms.svg)](https://anaconda.org/bfxcss/fastqwiper) [![Anaconda-Server Badge](https://anaconda.org/bfxcss/vcfwiper/badges/downloads.svg)](https://anaconda.org/bfxcss/vcfwiper)
+[![Anaconda-Server Badge](https://anaconda.org/bfxcss/vcfwiper/badges/version.svg)](https://anaconda.org/bfxcss/vcfwiper) [![Anaconda-Server Badge](https://anaconda.org/bfxcss/vcfwiper/badges/latest_release_date.svg)](https://anaconda.org/bfxcss/vcfwiper) [![Anaconda-Server Badge](https://anaconda.org/bfxcss/vcfwiper/badges/platforms.svg)](https://anaconda.org/bfxcss/vcfwiper) [![Anaconda-Server Badge](https://anaconda.org/bfxcss/vcfwiper/badges/downloads.svg)](https://anaconda.org/bfxcss/vcfwiper)
 
 Create and activate an empty Conda environment, if not already available.<br/>
 ```
