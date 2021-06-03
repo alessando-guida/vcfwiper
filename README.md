@@ -15,7 +15,7 @@ d reads from readable FASTQ files.
 
 
 ## Installation
-`VcfWiper` alone can be installed using both Conda and PyPi and runs smoothly on all OS specified above.
+`VcfWiper` can be installed using both Conda and PyPi and runs smoothly on all OS specified above.
 
 ### Anaconda or Miniconda
 [![Anaconda-Server Badge](https://anaconda.org/bfxcss/fastqwiper/badges/version.svg)](https://anaconda.org/bfxcss/fastqwiper) [![Anaconda-Server Badge](https://anaconda.org/bfxcss/fastqwiper/badges/latest_release_date.svg)](https://anaconda.org/bfxcss/fastqwiper) [![Anaconda-Server Badge](https://anaconda.org/bfxcss/fastqwiper/badges/platforms.svg)](https://anaconda.org/bfxcss/fastqwiper) [![Anaconda-Server Badge](https://anaconda.org/bfxcss/vcfwiper/badges/downloads.svg)](https://anaconda.org/bfxcss/vcfwiper)
@@ -41,7 +41,7 @@ options:
   --vcf_in TEXT          The input VCF file to be fixed    [required]
   --vcf_out TEXT         The wiped VCF file                [required]
 ```
-It accepts in input **readable** `*.vcf` files.
+It accepts in input `*.vcf` files.
 
 # Author
 **Tommaso Mazza**  
