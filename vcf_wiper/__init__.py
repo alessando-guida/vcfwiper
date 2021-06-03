@@ -3,7 +3,7 @@ File description
 """
 
 import logging
-from VcfWiper.vcf_wiper.color_log_formatter import ColorFormatter
+from vcf_wiper.color_log_formatter import ColorFormatter
 
 __author__ = "Tommaso Mazza"
 __copyright__ = "Copyright 2021, The VcfWiper Project"

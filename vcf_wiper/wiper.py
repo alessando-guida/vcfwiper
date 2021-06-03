@@ -11,7 +11,7 @@ init(convert=True)
 import re
 import click
 import codecs
-from VcfWiper.vcf_wiper import log
+from vcf_wiper import log
 
 __author__ = "Tommaso Mazza"
 __copyright__ = "Copyright 2021, The VcfWiper Project"
