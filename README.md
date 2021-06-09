@@ -2,7 +2,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/ljspohumdl4rhlmk?svg=true)](https://ci.appveyor.com/project/irongraft/vcfwiper)
 [![GitHub issues](https://img.shields.io/github/issues-raw/mazzalab/vcfwiper)](https://github.com/mazzalab/vcfwiper/issues)
 
-`VcfWiper` is a Python application that fixes VCF sequencing files. 
+`VcfWiper` is a Python application that fixes and wipes VCF sequencing files. 
 
 * Compatibility: Python <=3.9
 * OS: Windows, Linux, Mac OS
