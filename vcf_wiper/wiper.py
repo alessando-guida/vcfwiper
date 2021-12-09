@@ -101,53 +101,57 @@ def parse_info(text: str) -> list:
 def wipe_vcf(vcf_in: str, vcf_out: str):
     fin = open_vcf_file(vcf_in)
     if not fin:
-        log.error('The input VCF file does not exist or bad extension')
-        click.echo(click.style("The input VCF file does not exist or bad extension", fg='red'))
-    else:
-        click.echo(click.style(f"Start wiping {vcf_in}", fg='blue'))
+        m = 'The input VCF file does not exist or bad extension'
+        log.error(m)
+        click.echo(click.style(m, fg='red'))
+        raise FileNotFoundError(m)
 
-        # Open file out stream
-        fout = write_vcf_file(vcf_out)
+    m = f"Start wiping {vcf_in}"
+    log.info(m)
+    click.echo(click.style(m, fg='blue'))
 
-        # region VARIABLES
-        info_id: list = []
-        af_in_info: bool = False
-        # endregion
+    # Open file out stream
+    fout = write_vcf_file(vcf_out)
 
-        line_num = 1
-        for line in fin:
-            line: str = line.rstrip()
+    # region VARIABLES
+    info_id: list = []
+    af_in_info: bool = False
+    # endregion
 
-            if line_num == 1 and not line.startswith("##fileformat"):
-                fout.write("##fileformat=VCFv4.2\n")
-            elif line.startswith("##INFO"):
-                # INFO fields should be described as: first four keys are required, source and version are recommended
-                temp_line = line[8:-1]  # remove "##INFO=<" suffix
+    line_num = 1
+    for line in fin:
+        line: str = line.rstrip()
 
-                token = re.findall(r'([^=]+)=([^=]+)(?:,|$)', temp_line)
-                if len(token) < 4 or not all(x[0] in ['ID', 'Number', 'Type', 'Description'] for x in token):
-                    click.echo(click.style(f"The INFO field must contain at least the 'ID', 'Number', 'Type', and "
-                                           f"'Description' keys in the INFO header line: {line_num}", fg='red'))
-                else:
-                    for t in token:
-                        if t[0] == "ID":
-                            info_id.append(t[1])
-                            break
+        if line_num == 1 and not line.startswith("##fileformat"):
+            fout.write("##fileformat=VCFv4.2\n")
+        elif line.startswith("##INFO"):
+            # INFO fields should be described as: first four keys are required, source and version are recommended
+            temp_line = line[8:-1]  # remove "##INFO=<" suffix
 
-                fout.write(line+'\n')
+            token = re.findall(r'([^=]+)=([^=]+)(?:,|$)', temp_line)
+            if len(token) < 4 or not all(x[0] in ['ID', 'Number', 'Type', 'Description'] for x in token):
+                click.echo(click.style(f"The INFO field must contain at least the 'ID', 'Number', 'Type', and "
+                                       f"'Description' keys in the INFO header line: {line_num}", fg='red'))
+            else:
+                for t in token:
+                    if t[0] == "ID":
+                        info_id.append(t[1])
+                        break
 
-            # Loop lines
-            line_num += 1
+            fout.write(line+'\n')
 
-        # Print read variables
-        if 'AF' in info_id:
-            af_in_info = True
+        # Loop lines
+        line_num += 1
 
-        click.echo(click.style(f"INFO keys: {','.join([x for x in info_id])}", fg='blue'))
+    # Print read variables
+    if 'AF' in info_id:
+        af_in_info = True
 
-        # Close streams
-        fout.close()
-        fin.close()
+    click.echo(click.style(f"INFO keys: {','.join([x for x in info_id])}", fg='blue'))
+
+    # Close streams
+    fout.close()
+    fin.close()
 
     click.echo(click.style("Successfully terminated\n", fg='blue'))
 
