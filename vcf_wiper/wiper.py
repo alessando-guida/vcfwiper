@@ -98,9 +98,6 @@ def parse_info(text: str) -> list:
     return keys
 
 
-@click.command()
-@click.option("--vcf_in", required=True, help="The input VCF file")
-@click.option("--vcf_out", required=True, help="The wiped VCF file")
 def wipe_vcf(vcf_in: str, vcf_out: str):
     fin = open_vcf_file(vcf_in)
     if not fin:
@@ -155,6 +152,12 @@ def wipe_vcf(vcf_in: str, vcf_out: str):
     click.echo(click.style("Successfully terminated\n", fg='blue'))
 
 
+@click.command()
+@click.option("--vcf_in", required=True, help="The input VCF file")
+@click.option("--vcf_out", required=True, help="The wiped VCF file")
+def wipe_vcf_command(vcf_in, vcf_out):
+    return wipe_vcf(vcf_in, vcf_out)
+
+
 if __name__ == '__main__':
-    # click.clear()
-    wipe_vcf()
+    wipe_vcf_command()
