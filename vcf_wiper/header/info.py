@@ -1,6 +1,7 @@
 
 from vcf_wiper import log
 from vcf_wiper.header.headerfield import HeaderField
+from vcf_wiper.utils import remove_commas_from_quoted_strings
 
 
 class InfoHeader(HeaderField):
@@ -79,6 +80,9 @@ class InfoHeader(HeaderField):
 
     def _parse_info_line(self, line: str) -> dict:
         """parse the header line into one dictionary"""
+
+        # remove commas found inside quoted parts of the string
+        line = remove_commas_from_quoted_strings(string=line, sep=",")
 
         # remove expected string
         #   ##INFO=<ID=AA,Number=1,Type=String,Description="Ancestral Allele">

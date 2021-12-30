@@ -7,9 +7,9 @@ header_lines = [
     '##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency">',
     '##INFO=<ID=AA,Number=1,Type=String,Description="Ancestral Allele">',
     '##INFO=<ID=DB,Number=0,Type=Flag,Description="dbSNP membership, build 129">',
-    '##INFO=<ID=H2,Number=0,Type=Flag,Description="HapMap2 membership">',
+    '##INFO=<ID=H2,Number=0,Type=Flag,Description="HapMap2 membership">'
 ]
 
 # create obj
 header = Header()
-#header.read_header(header_lines)
+header.read_header(header_lines)
