@@ -6,10 +6,27 @@ class Header:
 
     def __init__(self):
         self.infolines = []
-        #self.metalines = []
-        #self.formatlines = []
-        #self.filterlines = []  # kind of useless
-        #self.altlines = []  # needed?
+        self.metalines = []
+        self.formatlines = []
+        #self.filterlines = []  # kind of useless #TODO
+        #self.altlines = []  # needed? #TODO
+
+    def __repr__(self):
+        out = "### HEADER ### \n"
+        out += "\n"
+        out += "\t--- InfoHeader--- \n"
+        for i in self.infolines:
+            out += "\t"+ i.ID + ": " + i.description + "\n"
+        out += "\n"
+        out += "\t--- FormatHeader--- \n"
+        for i in self.formatlines:
+            out += "\t"+ i + "\n"
+        out += "\n"
+        out += "\t--- MetaHeader--- \n"
+        for i in self.metalines:
+            out += "\t" + i + "\n"
+
+        return out
 
     def read_header(self, lines):
         for line in lines:

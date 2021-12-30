@@ -13,3 +13,6 @@ header_lines = [
 # create obj
 header = Header()
 header.read_header(header_lines)
+
+
+print(header)
