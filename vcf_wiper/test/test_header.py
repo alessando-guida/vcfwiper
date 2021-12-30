@@ -1,4 +1,5 @@
 from vcf_wiper.header.header import Header
+import pytest
 
 # Create tester header
 header_lines = [
@@ -12,7 +13,8 @@ header_lines = [
 
 # create obj
 header = Header()
-header.read_header(header_lines)
 
 
-print(header)
+def test_read_header():
+    header.read_header(header_lines)
+
