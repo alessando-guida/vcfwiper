@@ -1,5 +1,6 @@
 from vcf_wiper import log
 
+
 class HeaderField:
     """ This is the parent class to be inherited by
 
@@ -28,7 +29,7 @@ class HeaderField:
         """
 
         query_list = query.split(sep)
-        assert len(query_list) > 0, "query string is empty: %s" % query
+        assert len(query_list) > 0, "the vcf field is empty: %s" % query
         out_dict = {}
         for item in query_list:
             if item != '':
