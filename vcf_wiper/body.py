@@ -9,9 +9,13 @@ class BodyLineRecord:
         "#CHROM  POS ID  REF ALT QUAL FILTER INFO"
 
         """
-        self.line_number = None
+        # FORMAT ----------------------------
+        self.col_sep = "\t"  # column separator
+        self.required_fields = ["CHROM", "POS", "ID", "REF", "ALT", "QUAL", "INFO", "FILTER"]
 
+        self.line_number = None  # this is the number of the line in the vcf file. Helps debugging
 
+        # Init emtpy body fields
         self.chrom = None
         self.pos = None
         self.id = None
@@ -20,10 +24,8 @@ class BodyLineRecord:
         self.qual = None
         self.info = None
         self.filter = None
-
-        # FORMAT ----------------------------
-        self.col_sep = "\t"  # column separator
-        self.required_fields = ["CHROM", "POS", "ID", "REF", "ALT", "QUAL", "INFO", "FILTER"]
+        self.format = None  # optional
+        self.extra_fields: dict = {}  # optional
 
         # Read in the body header format
         self.columns = self._read_body_header(body_header_line=body_header_line)
@@ -51,14 +53,50 @@ class BodyLineRecord:
 
         # split line by separator
         splits = line.split(self.col_sep)
-
         assert len(self.columns) == len(splits), "Error in body record line: %d. Number of Columns not matching Body " \
                                                  "Header. Found: %d, Expected: %d" \
                                                  % (self.line_number, len(splits), len(self.columns))
-        record_dict = {}
+        extra_fields = {}
+        for index, col in enumerate(self.columns):
 
+            if col == "CHROM":
+                self.chrom = splits[index]
+            elif col == "POS":
+                self.pos = splits[index]
+            elif col == "ID":
+                self.id = splits[index]
+            elif col == "REF":
+                self.ref = splits[index]
+            elif col == "ALT":
+                self.alt = splits[index]
+            elif col == "QUAL":
+                self.qual = splits[index]
+            elif col == "INFO":
+                self.info = splits[index]
+            elif col == "FILTER":
+                self.filter = splits[index]
+            elif col == "FORMAT":
+                self.format = splits[index]
+            else:
+                self.extra_fields[col] = splits[index]
 
+    def __repr__(self):
+        out = "### BodyLineRecord ###\n"
+        out += "\tCHROM: " + self.chrom + "\n"
+        out += "\tPOS: " + self.pos + "\n"
+        out += "\tID: " + self.id + "\n"
+        out += "\tREF: " + self.ref + "\n"
+        out += "\tALT: " + self.alt + "\n"
+        out += "\tQUAL: " + self.qual + "\n"
+        out += "\tINFO: " + self.info + "\n"
+        out += "\tFILTER: " + self.filter + "\n"
+        if self.format:
+            out += "\tFORMAT: " + self.format + "\n"
+        for key, value in self.extra_fields.items():
+            out += "\t" + key + ": " + value + "\n"
+        out += "\n"
 
+        return out
 
     #
     # def read_line(line):
