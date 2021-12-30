@@ -18,7 +18,6 @@ class InfoHeader(HeaderField):
 
     Type:
     Possible Types for INFO fields are: Integer, Float, Flag, Character, and String.
-    TODO: Check typing
 
     Number
         The Number entry is an Integer that describes the number of values that can be included with the INFO field.
@@ -51,6 +50,7 @@ class InfoHeader(HeaderField):
         # SETTINGS -------------------------------------------------
         self.expected_string = "##INFO="   # expected string in the header field
         self.required_fields = ["ID", "Number", "Type", "Description"]  # this must be included
+        self.allowed_types = set([int, float, str, chr])
 
         # Start parsing --------------------------------------------
         assert line.startswith(self.expected_string), "line expected to start with %s" % self.expected_string
@@ -65,9 +65,8 @@ class InfoHeader(HeaderField):
         self.type: str = parsed["Type"]
         self.description: str = parsed["Description"]
 
-        # TODO : assert data type
-        #allowed_types = set([int, float, str, chr])
-        #assert type(self.number) in allowed_types, ""
+        # Assert data type
+        assert type(self.type) in self.allowed_types, "INFO header type not allowed: %s." % self.type
         if self.type == "Flag":
             assert self.number == 0, "Number is expected to be =0 when Type = Flag. Found: %s" % self.number
 
