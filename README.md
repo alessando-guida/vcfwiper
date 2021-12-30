@@ -2,7 +2,15 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/ljspohumdl4rhlmk?svg=true)](https://ci.appveyor.com/project/irongraft/vcfwiper)
 [![GitHub issues](https://img.shields.io/github/issues-raw/mazzalab/vcfwiper)](https://github.com/mazzalab/vcfwiper/issues)
 
+
+**Motivation**: Some variant callers can generate .vcf files that are not conform 
+to the VCF standard. This can cause unpredictable problems or errors when imported in downstream 
+software that requires standard vcf as input.  
+
 `VcfWiper` is a Python application that fixes and wipes VCF sequencing files. 
+it prints out a description of the problem with lines of the vcf that are not conform to the standard
+and remove those variants from the file.
+
 
 * Compatibility: Python <=3.9
 * OS: Windows, Linux, Mac OS

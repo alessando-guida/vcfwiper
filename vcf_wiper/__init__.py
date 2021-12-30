@@ -4,6 +4,7 @@ File description
 
 import logging
 from vcf_wiper.color_log_formatter import ColorFormatter
+import os
 
 __author__ = "Tommaso Mazza"
 __copyright__ = "Copyright 2021, The VcfWiper Project"
@@ -14,6 +15,7 @@ __status__ = "Development"
 __date__ = "03/06/2021"
 __creator__ = "t.mazza"
 __license__ = u"""
+
   Copyright (C) 2021 Tommaso Mazza <t.mazza@css-mendel.it>
   Viale Regina Margherita 261, 00198 Rome, Italy
 
@@ -50,3 +52,5 @@ ch.setFormatter(cf)  # sets the handler formatting
 
 # adds the handler to the global variable: log
 log.addHandler(ch)
+
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))

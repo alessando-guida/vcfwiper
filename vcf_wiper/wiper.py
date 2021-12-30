@@ -125,7 +125,9 @@ def wipe_vcf(vcf_in: str, vcf_out: str):
         if line_num == 1 and not line.startswith("##fileformat"):
             fout.write("##fileformat=VCFv4.2\n")
         elif line.startswith("##INFO"):
-            # INFO fields should be described as: first four keys are required, source and version are recommended
+            # INFO fields should be described as:
+            # first four keys are required,
+            # source and version are recommended
             temp_line = line[8:-1]  # remove "##INFO=<" suffix
 
             token = re.findall(r'([^=]+)=([^=]+)(?:,|$)', temp_line)

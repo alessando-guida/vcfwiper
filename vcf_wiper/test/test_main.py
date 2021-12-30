@@ -1,7 +1,6 @@
 import vcf_wiper
 from vcf_wiper import wiper
 import os
-#from click.testing import CliRunner
 
 
 print("ROOT_DIR: %s" % vcf_wiper.ROOT_DIR)

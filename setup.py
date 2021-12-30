@@ -23,11 +23,12 @@ if sys.version_info <= (3, 8):
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
+VERSION = "2021.1.1"
+# if 'APPVEYOR_BUILD_VERSION' not in os.environ:
+#     VERSION = os.environ['PKG_VERSION']
+# else:
+#     VERSION = os.environ['APPVEYOR_BUILD_VERSION']
 
-if 'APPVEYOR_BUILD_VERSION' not in os.environ:
-    VERSION = os.environ['PKG_VERSION']
-else:
-    VERSION = os.environ['APPVEYOR_BUILD_VERSION']
 
 print("version {} passed to setup.py".format(VERSION))
 assert re.match('^[0-9]+\.[0-9]+\.[0-9]+$', VERSION), "Invalid version number"
