@@ -6,12 +6,14 @@ testline1 = '##INFO=<ID=AA,Number=1,Type=String,Description="Ancestral Allele">'
 testline2 = '##INFO=<ID=BB,Number=0,Type=String,Description="Something else">'
 testline3 = '##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency">'
 testline4 = '##INFO=<ID=GG,Number=2,Type=Float,Description="Allele Frequency">'
+testline5 = '##INFO=<ID=H2,Number=0,Type=Flag,Description="HapMap2 membership">'
 
 # Parse the string
 AA_info = InfoHeader(line=testline1)
 BB_info = InfoHeader(line=testline2)
 AF_info = InfoHeader(line=testline3)
 GG_info = InfoHeader(line=testline4)
+H2_info = InfoHeader(line=testline5)
 
 
 # Positive tests
@@ -22,6 +24,16 @@ def test_parsing():
     assert AA_info.description == '"Ancestral Allele"'
 
 
+def test_flag():
+    wrong_headerline = '##INFO=<ID=H2,Number=1,Type=Flag,Description="HapMap2 membership">'
+    with pytest.raises(AssertionError, match=r".*Number is expected to be =0 when Type = Flag.*"):
+        InfoHeader(line=wrong_headerline)
+
+########################################################
+# TEST VALIDATION
+########################################################
+
+# TEST NUMBER FIELD ----------------------------------------
 def test_value_checking_zeros():
     BB_info.validate_format(vcf_info_line="BB;H2")
 
@@ -45,7 +57,11 @@ def test_value_A():
     AF_info.validate_format(vcf_info_line="AF=1")
     AF_info.validate_format(vcf_info_line="AF=1,2;BB")
 
+def test_value_R():
+    pass
 
+def test_value_G():
+    pass
 
 def test_value_checking_mixed():
     # add mix string, with assigned value and not
@@ -54,7 +70,6 @@ def test_value_checking_mixed():
     BB_info.validate_format(vcf_info_line=body_str_to_validate)
 
 
-# negative test
 def test_expected_value_length():
 
     # BB should not have any value assigned here

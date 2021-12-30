@@ -57,7 +57,8 @@ class InfoHeader(HeaderField):
         # parse info fields
         parsed = self._parse_info_line(line=line)
         # make sure the format is Ok
-        self._sanity_check(parsed)
+        for field in parsed.keys():
+            assert field in set(self.required_fields), "Expected field missing in INFO header: %s" % field
 
         self.ID: str = parsed["ID"]
         self.number = parsed["Number"]  # can be either numeric or string
@@ -67,6 +68,8 @@ class InfoHeader(HeaderField):
         # TODO : assert data type
         #allowed_types = set([int, float, str, chr])
         #assert type(self.number) in allowed_types, ""
+        if self.type == "Flag":
+            assert self.number == 0, "Number is expected to be =0 when Type = Flag. Found: %s" % self.number
 
     def __repr__(self):
         out = "ID=%s\n" % self.ID
@@ -110,9 +113,6 @@ class InfoHeader(HeaderField):
 
         return out
 
-    def _sanity_check(self, parsed):
-        for field in parsed.keys():
-            assert field in set(self.required_fields), "Expected field missing in INFO header: %s" % field
 
     def validate_format(self, vcf_info_line: str):
         """Once the class has been instanciated, we can use this function to asser that
