@@ -17,4 +17,7 @@ def test_number_lines():
 
 #def test_validation():
 
+def test_empty_line():
+    vcf1.validate()
+
 vcf1.validate()

@@ -152,7 +152,6 @@ class InfoHeader(HeaderField):
                         "; Found: %s" % (self.ID, vcf_info_line)
                 elif self.number > 1:
                     splits = parse_dict[self.ID].split(",")
-                    print(splits)
                     assert len(splits) == self.number, \
                         "Expected input line (%s) to generate %d splits for ID: %s. Found: %s" % \
                         (vcf_info_line, self.number, self.ID, ", ".join(splits))

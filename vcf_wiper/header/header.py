@@ -1,6 +1,6 @@
 from vcf_wiper import log
 from vcf_wiper.header.info import InfoHeader
-
+from vcf_wiper.body import BodyLineRecord
 
 class Header:
 
@@ -30,9 +30,8 @@ class Header:
 
     def read_header(self, lines):
         for index, line in enumerate(lines):
-            log.info("Read Header line: %d" % index)
+            log.info("Read Header line: %d" % (int(index)+1))
             if line.startswith("##INFO"):
-                print(line)
                 self.infolines.append(InfoHeader(line=line))
 
         #     if line is format:
@@ -42,8 +41,9 @@ class Header:
         #         self.metalines.append(MetaHeader()
 
     def _validate_info(self, query):
-        # for info in self.infolines:
-        #     info.validate_format(query)
+
+        for info in self.infolines:
+            info.validate_format(query)
         #
         # assert no
         # missing
@@ -54,8 +54,8 @@ class Header:
     def _validate_format(self, query):
         pass
 
-    #def validate(self, bodyrecord: BodyRecord)
-        #self._validate_info(bodyrecord.get_info())
+    def validate(self, bodyrecord: BodyLineRecord):
+        self._validate_info(bodyrecord.info)
         #self._validate_format(bodyrecord.get_format())
 
 

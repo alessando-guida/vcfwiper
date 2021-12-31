@@ -1,6 +1,8 @@
 import os
 import codecs
-from vcf_wiper.header.header import  Header
+from vcf_wiper.header.header import Header
+from vcf_wiper.body import BodyLineRecord
+from vcf_wiper import log
 
 class VcfRecord:
 
@@ -47,4 +49,26 @@ class VcfRecord:
     def validate(self):
         header = Header()
         header.read_header(lines=self.header_lines)
+
+        # NOTE: this might not actually be correct in case there are empty lines.
+        first_body_line_number = len(self.body_header_line) + len(self.header_lines) + 1
+
+        for index, line in enumerate(self.body_lines):
+            line_number = index + first_body_line_number
+            log.info("body line: %d (with header: %d)" % (index, line_number))
+
+            if self.body_lines == "" or self.body_lines == "\n":
+                raise ValueError("Line is empty: %d" % line_number)
+
+            # define body reading the body header line
+            bodyrecord = BodyLineRecord(self.body_header_line[0])
+            # read in the body line
+            bodyrecord.read_body_line(line, line_number=line_number)
+
+            # Verify that the body is written according to the header specifications
+            try:
+                header.validate(bodyrecord)
+            except Exception as e:
+                log.error(e)
+
 

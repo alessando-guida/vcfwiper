@@ -37,12 +37,12 @@ def test_col_num_not_matching():
     bodyrecord = BodyLineRecord(body_header_line=nine_cols_header)
     with pytest.raises(AssertionError,
                 match=r"Error in body record line: 1. Number of Columns not matching Body Header. Found: 8, Expected: 9"):
-        bodyrecord.read_body_record(line=body_line1, line_number=1)
+        bodyrecord.read_body_line(line=body_line1, line_number=1)
 
 
 def test_bodyrecord_import():
     bodyrecord = BodyLineRecord(body_header_line=body_header1)
-    bodyrecord.read_body_record(line=body_line1, line_number=1)
+    bodyrecord.read_body_line(line=body_line1, line_number=1)
 
     assert bodyrecord.chrom == "chr7"
     assert bodyrecord.ref == "A"

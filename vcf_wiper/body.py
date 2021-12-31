@@ -47,7 +47,7 @@ class BodyLineRecord:
 
         return body_header_splits
 
-    def read_body_record(self, line: str, line_number):
+    def read_body_line(self, line: str, line_number):
 
         self.line_number = line_number
 
