@@ -1,6 +1,3 @@
-from vcf_wiper import log
-
-
 class HeaderField:
     """ This is the parent class to be inherited by
 
@@ -33,11 +30,11 @@ class HeaderField:
         out_dict = {}
         for item in query_list:
             if item != '':
-                splitted = item.split(assign_symbol)
-                if len(splitted) == 2:
-                    key, value = splitted
-                elif len(splitted) == 1:
-                    key = splitted[0]
+                splits = item.split(assign_symbol)
+                if len(splits) == 2:
+                    key, value = splits
+                elif len(splits) == 1:
+                    key = splits[0]
                     value = ""
                 else:
                     raise ValueError("unexpected value")

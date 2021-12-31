@@ -116,13 +116,12 @@ class InfoHeader(HeaderField):
 
         return out
 
-
     def validate_format(self, vcf_info_line: str):
         """Once the class has been instanciated, we can use this function to asser that
             the vcf fields are according to the standard
 
-            vcf_info_line (str): this is the entire string to that we will find in the vcf row/colum. It contains not only
-                                 the value we are interested in but also all the other info fields.
+            vcf_info_line (str): this is the entire string to that we will find in the vcf row/colum. It contains not
+                                only the value we are interested in but also all the other info fields.
                                  Example: "AA=3;DP=14;AF=0.5;BB;H2"
         """
         # parse all the info fields in the string we need to validate
@@ -154,7 +153,8 @@ class InfoHeader(HeaderField):
                 elif self.number > 1:
                     splits = parse_dict[self.ID].split(",")
                     print(splits)
-                    assert len(splits) == self.number, "Expected input line (%s) to generate %d splits for ID: %s. Found: %s" % \
+                    assert len(splits) == self.number, \
+                        "Expected input line (%s) to generate %d splits for ID: %s. Found: %s" % \
                         (vcf_info_line, self.number, self.ID, ", ".join(splits))
 
         if not found:
