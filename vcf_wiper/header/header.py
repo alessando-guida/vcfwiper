@@ -6,8 +6,8 @@ class Header:
 
     def __init__(self):
         self.infolines = []
-        self.metalines = []
-        self.formatlines = []
+        self.metalines = [] #TODO
+        self.formatlines = [] #TODO
         #self.filterlines = []  # kind of useless #TODO
         #self.altlines = []  # needed? #TODO
 
@@ -29,8 +29,10 @@ class Header:
         return out
 
     def read_header(self, lines):
-        for line in lines:
+        for index, line in enumerate(lines):
+            log.info("Read Header line: %d" % index)
             if line.startswith("##INFO"):
+                print(line)
                 self.infolines.append(InfoHeader(line=line))
 
         #     if line is format:

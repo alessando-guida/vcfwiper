@@ -1,6 +1,6 @@
 import os
 import codecs
-
+from vcf_wiper.header.header import  Header
 
 class VcfRecord:
 
@@ -43,3 +43,8 @@ class VcfRecord:
         out += "\tBody lines: %d \n" % len(self.body_lines)
 
         return out
+
+    def validate(self):
+        header = Header()
+        header.read_header(lines=self.header_lines)
+

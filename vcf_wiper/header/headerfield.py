@@ -10,7 +10,7 @@ class HeaderField:
         # <ID=AA,Number=1,Type=String,Description="Ancestral Allele">
         assert len(line_desc) > 2, "empty string %s" % line_desc
         assert line_desc.startswith("<")
-        assert line_desc.endswith(">")
+        assert line_desc.endswith(">\n")
 
     def parse_to_dict(self, query: str, sep: str = ";", assign_symbol: str = "=") -> dict:
         """

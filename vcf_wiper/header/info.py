@@ -96,10 +96,10 @@ class InfoHeader(HeaderField):
         else:
             raise ValueError("Expected < at the betting of the string. Found: %s" % line_desc)
 
-        if line_desc.endswith(">"):
-            line_desc = line_desc[:-1]  # remove > at the end
+        if line_desc.endswith(">\n"):
+            line_desc = line_desc[:-2]  # remove > at the end
         else:
-            raise ValueError("Expected > at the end of the string. Found: %s" % line_desc)
+            raise ValueError("Expected >\\n at the end of the string. Found: %s" % line_desc)
 
         # split by commas
         fields = line_desc.split(",")

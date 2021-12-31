@@ -2,11 +2,11 @@ from vcf_wiper.header.info import InfoHeader
 import pytest
 
 # define header field by providing the matching string
-testline1 = '##INFO=<ID=AA,Number=1,Type=String,Description="Ancestral Allele">'
-testline2 = '##INFO=<ID=BB,Number=0,Type=String,Description="Something else">'
-testline3 = '##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency">'
-testline4 = '##INFO=<ID=GG,Number=2,Type=Float,Description="Allele Frequency">'
-testline5 = '##INFO=<ID=H2,Number=0,Type=Flag,Description="HapMap2 membership">'
+testline1 = '##INFO=<ID=AA,Number=1,Type=String,Description="Ancestral Allele">\n'
+testline2 = '##INFO=<ID=BB,Number=0,Type=String,Description="Something else">\n'
+testline3 = '##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency">\n'
+testline4 = '##INFO=<ID=GG,Number=2,Type=Float,Description="Allele Frequency">\n'
+testline5 = '##INFO=<ID=H2,Number=0,Type=Flag,Description="HapMap2 membership">\n'
 
 # Parse the string
 AA_info = InfoHeader(line=testline1)
@@ -25,7 +25,7 @@ def test_parsing():
 
 
 def test_flag():
-    wrong_headerline = '##INFO=<ID=H2,Number=1,Type=Flag,Description="HapMap2 membership">'
+    wrong_headerline = '##INFO=<ID=H2,Number=1,Type=Flag,Description="HapMap2 membership">\n'
     with pytest.raises(AssertionError, match=r".*Number is expected to be =0 when Type = Flag.*"):
         InfoHeader(line=wrong_headerline)
 
