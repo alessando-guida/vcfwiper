@@ -3,6 +3,4 @@
 ##FORMAT=<ID=TAG,Number=1,Type=String,Description="a tag">
 ##INFO=<ID=AF,Number=1,Type=Float,Description="Allelic Frequency">
 #CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	Pat02
-chr7	92126080	rs61750423	T		.	PASS	.	filter:AF:TAG	warning:0.7:wrong_deletion
-chr7	92132484	rs61750415		A	.	PASS	.	filter:AF:TAG	warning:0.7:wrong_insertion
 chr7	92132485	.	.	A	.	PASS	AF=0.4	filter:AF:TAG	warning:0.7:AF_info_field

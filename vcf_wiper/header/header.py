@@ -44,12 +44,6 @@ class Header:
 
         for info in self.infolines:
             info.validate_format(query)
-        #
-        # assert no
-        # missing
-        # assert no
-        # extra
-        pass
 
     def _validate_format(self, query):
         pass

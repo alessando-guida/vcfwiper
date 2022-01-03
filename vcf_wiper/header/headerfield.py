@@ -1,3 +1,12 @@
+from vcf_wiper import log
+
+from vcf_wiper.utils import can_be_float
+from vcf_wiper.utils import can_be_int
+from vcf_wiper.utils import can_be_bool
+from vcf_wiper.utils import can_be_chr
+from vcf_wiper.utils import can_be_str
+
+
 class HeaderField:
     """ This is the parent class to be inherited by
 
@@ -41,3 +50,29 @@ class HeaderField:
 
                 out_dict[key] = value
         return out_dict
+
+    def convert_to_type(self, value, expected):
+        """
+        convert a value into a datatype. Also it checks if the
+        value can be converted to that datatype or not
+
+        Parameters
+        ----------
+        value
+        expected
+        """
+        if expected == "Float" and can_be_float(value):
+            return float(value)
+        elif expected == "Integer" and can_be_int(value):
+            return int(value)
+        elif expected == "Flag" and can_be_bool(value):
+            return bool(value)
+        elif expected == "Character" and can_be_chr(value):
+            return str(value)
+        elif expected == "String" and can_be_str(value):
+            return str(value)
+        else:
+            e = "Incorrect Expected type, cannot convert value (%s) to  type (%s)" % (value, expected)
+            log.error(e)
+            raise ValueError(e)
+

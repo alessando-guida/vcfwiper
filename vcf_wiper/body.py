@@ -1,3 +1,5 @@
+from vcf_wiper import log
+
 class BodyLineRecord:
 
     def __init__(self, body_header_line: str):
@@ -53,10 +55,12 @@ class BodyLineRecord:
 
         # split line by separator
         splits = line.split(self.col_sep)
-        assert len(self.columns) == len(splits), "Error in body record line: %d. Number of Columns not matching Body " \
-                                                 "Header. Found: %d, Expected: %d" \
-                                                 % (self.line_number, len(splits), len(self.columns))
-        extra_fields = {}
+        if len(self.columns) != len(splits):
+            e = "Error in body record line: %d. Number of Columns not matching Body Header. Found: %d, Expected: %d" \
+                % (self.line_number, len(splits), len(self.columns))
+            log.error(e)
+            raise ValueError(e)
+
         for index, col in enumerate(self.columns):
 
             if col == "CHROM":

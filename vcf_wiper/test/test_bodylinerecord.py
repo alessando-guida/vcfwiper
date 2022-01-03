@@ -35,7 +35,7 @@ def test_col_num_not_matching():
     """col number shold match the number of cols in the body header"""
     nine_cols_header = "#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT"
     bodyrecord = BodyLineRecord(body_header_line=nine_cols_header)
-    with pytest.raises(AssertionError,
+    with pytest.raises(ValueError,
                 match=r"Error in body record line: 1. Number of Columns not matching Body Header. Found: 8, Expected: 9"):
         bodyrecord.read_body_line(line=body_line1, line_number=1)
 
@@ -51,4 +51,3 @@ def test_bodyrecord_import():
     assert bodyrecord.info == "AF=0.1;Uncertain_significance"
     assert bodyrecord.filter == "filter=cancer;cancer;SO:0001583|missense_variant;AF=0.1"
 
-#print(bodyrecord)

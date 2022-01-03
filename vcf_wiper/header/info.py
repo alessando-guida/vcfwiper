@@ -51,7 +51,7 @@ class InfoHeader(HeaderField):
         # SETTINGS -------------------------------------------------
         self.expected_string = "##INFO="   # expected string in the header field
         self.required_fields = ["ID", "Number", "Type", "Description"]  # this must be included
-        self.allowed_types = set([int, float, str, chr])
+        self.allowed_types = set(["Integer", "Float", "Flag", "Character", "String"])
 
         # Start parsing --------------------------------------------
         assert line.startswith(self.expected_string), "line expected to start with %s" % self.expected_string
@@ -66,8 +66,11 @@ class InfoHeader(HeaderField):
         self.type: str = parsed["Type"]
         self.description: str = parsed["Description"]
 
-        # Assert data type
-        assert type(self.type) in self.allowed_types, "INFO header type not allowed: %s." % self.type
+        # Assert data type -----------------------------------------
+        if self.type not in self.allowed_types:
+            e = "INFO header type not allowed: %s." % self.type
+            log.error(e)
+            raise TypeError(e)
         if self.type == "Flag":
             assert self.number == 0, "Number is expected to be =0 when Type = Flag. Found: %s" % self.number
 
@@ -148,8 +151,23 @@ class InfoHeader(HeaderField):
                     assert parse_dict[self.ID] == "", "InfoHeader %s was expected to have 0 items assigned to it." \
                         "Found: %s" % (self.ID, vcf_info_line)
                 elif self.number == 1:
-                    assert len(parse_dict[self.ID]) == 1, "InfoHeader %s length did not match expectation. Expected 1" \
-                        "; Found: %s" % (self.ID, vcf_info_line)
+
+                    if parse_dict[self.ID] == "":
+                        e = "Expected InfoHeader (%s) to have 1 value. Found an empty string instead. (%s)" % (self.ID, vcf_info_line)
+                        log.error(e)
+                        raise ValueError(e)
+
+                    converted_value = self.convert_to_type(value=parse_dict[self.ID], expected=self.type)
+
+                    # NOTE: can not use parse_dict[self.ID] because if it comes as a string like 0.4 than len == 3
+                    # we need to convert it first
+                    if len([converted_value]) != 1:
+                        e = "InfoHeader %s length did not match expectation. Expected 1; Found: %d, (string: %s)" % (
+                        self.ID, len(parse_dict[self.ID]), vcf_info_line)
+                        log.error(e)
+                        raise ValueError(e)
+
+
                 elif self.number > 1:
                     splits = parse_dict[self.ID].split(",")
                     assert len(splits) == self.number, \

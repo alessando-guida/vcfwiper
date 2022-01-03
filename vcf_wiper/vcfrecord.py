@@ -46,7 +46,8 @@ class VcfRecord:
 
         return out
 
-    def validate(self):
+    def validate(self, verbose=False):
+        log.info("validating file: %s" % self.file_path)
         header = Header()
         header.read_header(lines=self.header_lines)
 
@@ -70,5 +71,8 @@ class VcfRecord:
                 header.validate(bodyrecord)
             except Exception as e:
                 log.error(e)
+                if verbose:
+                    print("Line Numeber: %d" % line_number)
+                    print(bodyrecord)
 
 
